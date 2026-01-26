@@ -1,26 +1,18 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 
-type Role = "software" | "electrical";
+export type Role = "software" | "electrical";
 
 interface RoleContextType {
   role: Role;
-  setRole: (role: Role) => void;
-  toggleRole: () => void;
 }
 
 const RoleContext = createContext<RoleContextType | undefined>(undefined);
 
-export function RoleProvider({ children }: { children: React.ReactNode }) {
-  const [role, setRole] = useState<Role>("software");
-
-  const toggleRole = () => {
-    setRole((prev) => (prev === "software" ? "electrical" : "software"));
-  };
-
+export function RoleProvider({ children, role }: { children: React.ReactNode; role: Role }) {
   return (
-    <RoleContext.Provider value={{ role, setRole, toggleRole }}>
+    <RoleContext.Provider value={{ role }}>
       {children}
     </RoleContext.Provider>
   );

@@ -1,9 +1,9 @@
 import { RoleProvider } from "@/components/RoleContext";
 import { HomeTemplate } from "@/components/HomeTemplate";
 
-export default function SoftwareHome() {
+export default function EngineeringHome() {
   return (
-    <RoleProvider role="software">
+    <RoleProvider role="electrical">
       <HomeTemplate />
     </RoleProvider>
   );
