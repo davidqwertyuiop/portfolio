@@ -35,7 +35,7 @@ export function Contact() {
 
             <div className="flex flex-col justify-center space-y-6">
               <a 
-                href={`mailto:${portfolioData.personal.email}`}
+                href={`mailto:${portfolioData.personal.email}?subject=Collaboration%20Inquiry&body=Hi,%20I%20would%20like%20to%20work%20with%20you.`}
                 className="group flex items-center justify-between p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all overflow-hidden relative"
               >
                 <div className="flex items-center gap-6">
@@ -43,8 +43,8 @@ export function Contact() {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-black uppercase tracking-widest text-zinc-500 mb-1">Email</span>
-                    <span className="text-lg font-bold text-white tracking-tight">{portfolioData.personal.email}</span>
+                    <span className="text-xs font-black uppercase tracking-widest text-zinc-500 mb-1">Direct Message</span>
+                    <span className="text-lg font-bold text-white tracking-tight italic">Initiate Collaboration</span>
                   </div>
                 </div>
                 <ArrowUpRight className="w-6 h-6 text-zinc-600 group-hover:text-white transition-colors group-hover:translate-x-1 group-hover:-translate-y-1" />

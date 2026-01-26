@@ -40,50 +40,20 @@ export function Navbar() {
             <Link href="#about" className="hover:text-white transition-colors">About</Link>
             <Link href="#skills" className="hover:text-white transition-colors">Stack</Link>
             <Link href="#projects" className="hover:text-white transition-colors">Projects</Link>
-            {/* Download CV Label */}
-            <a 
-              href={portfolioData.personal.cvPath} 
-              download 
-              className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors"
-            >
-              <Download className="w-4 h-4" />
-              CV
-            </a>
-          </div>
-
-          <div className="h-6 w-px bg-white/10" />
-
-          <div className="flex items-center gap-4">
-            <Link
-              href={pathname === "/engineering" ? "/" : "/engineering"}
-              className={cn(
-                "h-10 px-6 rounded-xl flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition-all duration-500 border overflow-hidden relative group",
-                role === "software" 
-                  ? "bg-red-900/10 border-red-500/20 text-red-500 hover:bg-red-500/20" 
-                  : "bg-purple-600/10 border-purple-500/20 text-purple-400 hover:bg-purple-500/20"
-              )}
-            >
-              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="relative z-10 flex items-center gap-2">
-                {pathname === "/engineering" ? (
-                  <>
-                    <Code className="w-4 h-4" />
-                    Software Side
-                  </>
-                ) : (
-                  <>
-                    <Cpu className="w-4 h-4" />
-                    Electrical Side
-                  </>
-                )}
+            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-zinc-500">
+              <span className="flex items-center gap-1.5 hover:text-white transition-colors cursor-default">
+                <Download className="w-4 h-4" />
+                CV
               </span>
-            </Link>
-            
-            <button className="h-10 px-6 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-              <Wallet className="w-4 h-4" />
-              Connect
-            </button>
+              <div className="flex items-center gap-2">
+              </div>
+            </div>
           </div>
+
+          <button className="h-10 px-6 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            <Wallet className="w-4 h-4" />
+            Connect
+          </button>
         </div>
       </div>
     </nav>

@@ -1,10 +1,11 @@
 "use client";
 
 import { useRole } from "@/components/RoleContext";
-import { portfolioData } from "@/data/portfolio";
+import { portfolioData, Project } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
-import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { Github, ExternalLink, ArrowRight, Play } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function Projects() {
@@ -34,7 +35,7 @@ export function Projects() {
               transition={{ delay: 0.1 }}
               className="text-4xl lg:text-5xl font-black tracking-tight"
             >
-              Selected Engineering Marvels
+              {role === "software" ? "Engineered for the Blockchain" : "Industrial Automation Marvels"}
             </motion.h2>
           </div>
           
@@ -55,27 +56,34 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {data.projects.map((project, index) => (
+          {data.projects.map((project: Project, index: number) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative flex flex-col rounded-[3rem] border border-white/5 bg-white/[0.01] overflow-hidden hover:border-white/10 transition-all"
+              className="group relative flex flex-col rounded-[3rem] border border-white/5 bg-white/[0.01] overflow-hidden hover:border-white/10 transition-all shadow-2xl"
             >
-              {/* Card visual header */}
+              {/* Image Header */}
               <div className="h-64 relative overflow-hidden bg-zinc-900 border-b border-white/5">
-                <div className={cn(
-                  "absolute inset-0 opacity-20 bg-gradient-to-br",
-                  role === "software" ? "from-purple-900 via-transparent to-transparent" : "from-red-950 via-transparent to-transparent"
-                )} />
-                <div className="absolute inset-0 flex items-center justify-center opacity-10 blur-sm group-hover:opacity-20 group-hover:blur-none transition-all duration-1000">
-                  <span className="text-9xl font-black text-white select-none">0{index + 1}</span>
-                </div>
+                {project.image ? (
+                  <Image 
+                    src={project.image} 
+                    alt={project.title}
+                    fill
+                    className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000"
+                  />
+                ) : (
+                  <div className={cn(
+                    "absolute inset-0 opacity-20 bg-gradient-to-br",
+                    role === "software" ? "from-purple-900 via-transparent to-transparent" : "from-red-950 via-transparent to-transparent"
+                  )} />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 
                 {/* Project Links Overlay */}
-                <div className="absolute top-8 right-8 flex gap-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                <div className="absolute top-8 right-8 flex gap-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all z-20">
                   {project.github && (
                     <Link href={project.github} target="_blank" className="w-12 h-12 rounded-2xl bg-black/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
                       <Github className="w-6 h-6" />
@@ -86,10 +94,15 @@ export function Projects() {
                       <ExternalLink className="w-6 h-6" />
                     </Link>
                   )}
+                  {project.video && (
+                    <Link href={project.video} target="_blank" className="w-12 h-12 rounded-2xl bg-black/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all border border-red-500/50">
+                      <Play className="w-6 h-6 fill-current" />
+                    </Link>
+                  )}
                 </div>
               </div>
 
-              <div className="p-10 flex flex-col flex-1">
+              <div className="p-10 flex flex-col flex-1 relative z-10 bg-zinc-950/40 backdrop-blur-sm">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
                     <span 
@@ -110,17 +123,23 @@ export function Projects() {
                 </p>
 
                 <div className="pt-8 border-t border-white/5 flex items-center justify-between">
-                   <Link 
-                     href={project.github || "#"} 
-                     target="_blank"
-                     className={cn(
-                       "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all",
-                       role === "software" ? "text-purple-400 hover:text-purple-300" : "text-red-700 hover:text-red-600"
-                     )}
-                   >
-                     Case Study
-                     <ArrowRight className="w-4 h-4" />
-                   </Link>
+                   {(project.github || (project.link && project.link !== "#")) ? (
+                     <Link 
+                       href={project.link !== "#" ? project.link : (project.github || "#")} 
+                       target="_blank"
+                       className={cn(
+                         "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all",
+                         role === "software" ? "text-purple-400 hover:text-purple-300" : "text-red-700 hover:text-red-600"
+                       )}
+                     >
+                       {project.link !== "#" ? "Launch Platform" : "View Case Study"}
+                       <ArrowRight className="w-4 h-4" />
+                     </Link>
+                   ) : (
+                     <div className="text-xs font-black uppercase tracking-widest text-zinc-600 italic">
+                        Internal Infrastructure Project
+                     </div>
+                   )}
                 </div>
               </div>
             </motion.div>
