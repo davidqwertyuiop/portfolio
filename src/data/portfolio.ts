@@ -92,6 +92,13 @@ export const portfolioData = {
     ],
     experience: [
       {
+        role: "NYSC Corp Member (Mini Grid Department)",
+        company: "REA-NEP (Rural Electrification Agency)",
+        period: "April 2025 – April 2026 (Expected)",
+        location: "Abuja, Nigeria",
+        description: "Evaluated minigrid developers across Nigeria. Conducted technical assessments and site visitations for rural electrification projects."
+      },
+      {
         role: "Blockchain Developer (Solana) & Mobile Engineer",
         company: "Freelance",
         period: "Oct 2023 – Present",
@@ -157,7 +164,7 @@ export const portfolioData = {
   },
   electrical: {
     profileImage: "/profile_electrical.jpg",
-    title: "Senior Electrical & Control Systems Engineer",
+    title: "Electrical & Control Systems Engineer",
     description:
       "Powering systems with precision. Expertise in High Voltage Distribution, PLC Automation (Ladder Logic), and IoT-integrated control systems.",
     skills: [
@@ -180,6 +187,13 @@ export const portfolioData = {
       }
     ],
     experience: [
+      {
+        role: "NYSC Corp Member (Mini Grid Department)",
+        company: "REA-NEP (Rural Electrification Agency)",
+        period: "April 2025 – April 2026 (Expected)",
+        location: "Abuja, Nigeria",
+        description: "Evaluated minigrid developers across Nigeria. Conducted technical assessments and site visitations for rural electrification projects, including the UniAbuja 2MW solar farm."
+      },
       {
         role: "Electrical Intern",
         company: "IBEDC (MURG Plaza Project)",
@@ -208,6 +222,15 @@ export const portfolioData = {
       { title: "Graduate Member, NSE", period: "2024 - Present" }
     ],
     projects: [
+      {
+        title: "UniAbuja 2MW Solar Farm Visitation",
+        description: "Site evaluation and technical inspection of the 2MW solar farm at the University of Abuja as part of the REA-NEP mini-grid development program.",
+        tags: ["Solar Energy", "Mini Grid", "Site Evaluation"],
+        link: "#",
+        github: undefined,
+        image: "/projects/uniabujavisit.jpg",
+        video: "/videos/uniabujavisit.mp4"
+      },
       {
         title: "Smart Irrigation & IoT Control",
         description: "Hardware-software integrated system using Flutter, Firebase, and sensors for real-time farm monitoring and automated irrigation.",

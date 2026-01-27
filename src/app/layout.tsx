@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Sijibomi Fadeyibi | Engineer & Developer",
-  description: "Senior Software Engineer & Electrical Systems Specialist. Building the future of blockchain and industrial automation.",
+  description: "Software Engineer & Electrical Systems Specialist. Building the future of blockchain and industrial automation.",
 };
 
 export default function RootLayout({
