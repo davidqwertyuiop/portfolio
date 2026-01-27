@@ -4,8 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRole } from "@/components/RoleContext";
 import { cn } from "@/lib/utils";
-import { Cpu, Code, Wallet, Download, Github } from "lucide-react";
+import { Cpu, Code, Wallet, Download, Github, Zap } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
+import { motion } from "framer-motion";
 
 export function Navbar() {
   const { role } = useRole();
@@ -50,10 +51,33 @@ export function Navbar() {
             </div>
           </div>
 
-          <button className="h-10 px-6 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-            <Wallet className="w-4 h-4" />
-            Connect
-          </button>
+          {role === "software" ? (
+            <button className="h-10 px-6 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+              <Wallet className="w-4 h-4" />
+              Connect
+            </button>
+          ) : (
+            <div className="flex items-center gap-3">
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 5, -5, 0],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-10 h-10 rounded-xl bg-red-600/20 flex items-center justify-center border border-red-500/20 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.2)]"
+              >
+                <Zap className="w-5 h-5 fill-current" />
+              </motion.div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold text-red-500 leading-none uppercase tracking-tighter">System</span>
+                <span className="text-[12px] font-black text-white leading-none uppercase">Online</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </nav>

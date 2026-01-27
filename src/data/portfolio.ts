@@ -92,13 +92,6 @@ export const portfolioData = {
     ],
     experience: [
       {
-        role: "NYSC Corp Member (Mini Grid Department)",
-        company: "REA-NEP (Rural Electrification Agency)",
-        period: "April 2025 – April 2026 (Expected)",
-        location: "Abuja, Nigeria",
-        description: "Evaluated minigrid developers across Nigeria. Conducted technical assessments and site visitations for rural electrification projects."
-      },
-      {
         role: "Blockchain Developer (Solana) & Mobile Engineer",
         company: "Freelance",
         period: "Oct 2023 – Present",
