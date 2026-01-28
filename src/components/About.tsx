@@ -105,57 +105,27 @@ export function About() {
             </div>
           </motion.div>
 
+          {/* Profile Image Column */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="aspect-[4/5] relative rounded-[3rem] lg:rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/10 group"
           >
-            {/* Mobile Side-by-Side Profiles */}
-            <div className="flex flex-row gap-4 lg:hidden h-48 md:h-64">
-              <div className="flex-1 relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10">
-                <Image 
-                  src="/profile_software.jpg" 
-                  alt="Software Identity"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-purple-600/10" />
+            {data.profileImage ? (
+               <Image 
+                 src={data.profileImage} 
+                 alt={portfolioData.personal.name}
+                 fill
+                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+               />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center p-12 overflow-hidden">
+                 <span className="text-[12rem] lg:text-[20rem] font-black text-white/5 select-none leading-none">
+                   {portfolioData.personal.name[0]}
+                 </span>
               </div>
-              <div className="flex-1 relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10">
-                <Image 
-                  src="/profile_electrical.jpg" 
-                  alt="Electrical Identity"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-red-800/10" />
-              </div>
-            </div>
-
-            {/* Main Section Image (Desktop) */}
-            <div className="hidden lg:block aspect-[4/5] relative rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/10 group">
-              {data.profileImage ? (
-                 <Image 
-                   src={data.profileImage} 
-                   alt={portfolioData.personal.name}
-                   fill
-                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                 />
-              ) : (
-                <>
-                  <div className={cn(
-                    "absolute inset-0 opacity-10",
-                    role === "software" ? "bg-purple-600" : "bg-red-800"
-                  )} />
-                  <div className="absolute inset-0 flex items-center justify-center p-12 overflow-hidden">
-                     <span className="text-[20rem] font-black text-white/5 select-none leading-none">
-                       {portfolioData.personal.name[0]}
-                     </span>
-                  </div>
-                </>
-              )}
-            </div>
+            )}
           </motion.div>
         </div>
       </div>

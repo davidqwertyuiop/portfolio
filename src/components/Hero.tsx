@@ -5,6 +5,7 @@ import { portfolioData } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Github, Linkedin, Mail, Download, ExternalLink, Code, Cpu, BookOpen } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function Hero() {
@@ -30,24 +31,41 @@ export function Hero() {
 
       <div className="container relative z-10 mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center gap-16">
         <div className="flex-1 space-y-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span className="text-xs font-bold tracking-widest uppercase text-zinc-400">Available for projects</span>
-          </motion.div>
+          <div className="flex items-center justify-between lg:justify-start gap-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-[10px] lg:text-xs font-bold tracking-widest uppercase text-zinc-400">Status: Active</span>
+            </motion.div>
+
+            {/* Mobile Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="lg:hidden w-12 h-12 rounded-full border-2 border-white/10 overflow-hidden relative"
+            >
+              <Image 
+                src={data.profileImage}
+                alt="Profile"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl lg:text-8xl font-black tracking-tight leading-[1.1] lg:leading-[0.9]"
+            className="text-4xl lg:text-8xl font-black tracking-tight leading-[1.1] lg:leading-[0.9]"
           >
             {portfolioData.personal.name.split(" ").map((name, i) => (
               <span key={i} className="block last:text-zinc-500">{name}</span>
@@ -59,7 +77,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className={cn(
-              "text-3xl lg:text-4xl font-bold italic tracking-tight",
+              "text-2xl lg:text-4xl font-bold italic tracking-tight",
               role === "software" ? "text-purple-400" : "text-red-600"
             )}
           >
@@ -70,7 +88,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-xl text-zinc-400 max-w-2xl leading-relaxed font-medium"
+            className="text-lg lg:text-xl text-zinc-400 max-w-2xl leading-relaxed font-medium"
           >
             {data.description}
           </motion.p>
@@ -94,24 +112,24 @@ export function Hero() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             
-            <div className="flex items-center gap-4">
-              <span className="text-zinc-500 font-black uppercase tracking-widest text-xs">CV Archive:</span>
+            <div className="flex flex-col gap-4 w-full lg:w-auto">
+              <span className="text-zinc-500 font-black uppercase tracking-widest text-[10px]">CV Archive:</span>
               <div className="flex gap-2">
                 <a 
                   href={role === "software" ? "/cv/sijibomi-software-cv.pdf" : "/cv/sijibomi-electrical-cv.pdf"}
                   target="_blank"
-                  className="h-14 px-8 rounded-2xl font-black uppercase tracking-widest flex items-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all backdrop-blur-sm group"
+                  className="flex-1 h-12 lg:h-14 px-4 lg:px-8 rounded-2xl font-black uppercase tracking-widest text-[10px] lg:text-xs flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all backdrop-blur-sm group"
                 >
                   Preview
-                  <BookOpen className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <BookOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 </a>
                 <a 
                   href={role === "software" ? "/cv/sijibomi-software-cv.pdf" : "/cv/sijibomi-electrical-cv.pdf"}
                   download 
-                  className="h-14 px-8 rounded-2xl font-black uppercase tracking-widest flex items-center gap-3 bg-zinc-100 text-black hover:bg-white transition-all shadow-xl group"
+                  className="flex-1 h-12 lg:h-14 px-4 lg:px-8 rounded-2xl font-black uppercase tracking-widest text-[10px] lg:text-xs flex items-center justify-center gap-3 bg-zinc-100 text-black hover:bg-white transition-all shadow-xl group"
                 >
                   Download
-                  <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>

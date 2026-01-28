@@ -35,7 +35,7 @@ export function Skills() {
           </motion.h2>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
           {data.skills.map((skill, index) => (
             <motion.div 
               key={index}
@@ -46,7 +46,7 @@ export function Skills() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="group relative"
             >
-              <div className="relative h-40 rounded-3xl border border-white/5 bg-white/[0.02] p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-white/20 hover:bg-white/5 overflow-hidden">
+              <div className="relative h-32 lg:h-40 rounded-2xl lg:rounded-3xl border border-white/5 bg-zinc-900/50 p-4 lg:p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-white/20 hover:bg-white/5 overflow-hidden">
                 {/* Glow Effect */}
                 <div 
                   className="absolute inset-x-0 bottom-0 h-1/2 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl pointer-events-none"
@@ -54,14 +54,14 @@ export function Skills() {
                 />
                 
                 <skill.icon 
-                  className="w-12 h-12 mb-4 transition-all duration-500 group-hover:scale-110" 
+                  className="w-8 h-8 lg:w-12 lg:h-12 mb-3 lg:mb-4 transition-all duration-500 group-hover:scale-110" 
                   style={{ color: skill.color }}
                 />
-                <span className="text-sm font-bold tracking-tight text-zinc-400 group-hover:text-white transition-colors">
+                <span className="text-[10px] lg:text-sm font-bold tracking-tight text-zinc-400 group-hover:text-white transition-colors text-center">
                   {skill.name}
                 </span>
                 
-                <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-white/40 transition-colors" />
+                <div className="absolute top-3 right-3 lg:top-4 lg:right-4 w-1 lg:w-1.5 h-1 lg:h-1.5 rounded-full bg-white/10 group-hover:bg-white/40 transition-colors" />
               </div>
             </motion.div>
           ))}
