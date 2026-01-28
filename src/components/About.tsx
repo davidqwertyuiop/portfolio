@@ -12,16 +12,16 @@ export function About() {
   const data = portfolioData[role];
   
   return (
-    <section id="about" className="py-32 border-t border-white/5 bg-zinc-950/20">
+    <section id="about" className="py-16 lg:py-32 border-t border-white/5 bg-zinc-950/20">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="space-y-12 lg:sticky lg:top-32"
+            className="space-y-8 lg:space-y-12 lg:sticky lg:top-32"
           >
-            <div className="space-y-8">
+            <div className="space-y-6 lg:space-y-8">
               <h3 className={cn(
                 "text-xs font-black uppercase tracking-[0.3em] mb-4",
                 role === "software" ? "text-purple-500" : "text-red-800"
@@ -31,7 +31,7 @@ export function About() {
               <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight">
                 Solving complex problems with <span className="italic">precision</span>.
               </h2>
-              <div className="space-y-6 text-xl text-zinc-400 leading-relaxed font-medium">
+              <div className="space-y-4 lg:space-y-6 text-xl text-zinc-400 leading-relaxed font-medium">
                 <p>
                   I am <span className="text-white font-bold">{portfolioData.personal.name}</span>, 
                   a multidisciplinary engineer operating at the intersection of 
@@ -44,7 +44,7 @@ export function About() {
             </div>
 
             {/* Shared Background / Education Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 lg:pt-8">
               {/* Education */}
               <div className="space-y-6">
                 <div className={cn("flex items-center gap-3", role === "software" ? "text-purple-400" : "text-red-700")}>
@@ -109,29 +109,53 @@ export function About() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="aspect-[4/5] relative rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/10 group"
+            className="space-y-6"
           >
-            {/* Image Placeholder or Real Image */}
-            {data.profileImage ? (
-               <Image 
-                 src={data.profileImage} 
-                 alt={portfolioData.personal.name}
-                 fill
-                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-               />
-            ) : (
-              <>
-                <div className={cn(
-                  "absolute inset-0 opacity-10",
-                  role === "software" ? "bg-purple-600" : "bg-red-800"
-                )} />
-                <div className="absolute inset-0 flex items-center justify-center p-12 overflow-hidden">
-                   <span className="text-[20rem] font-black text-white/5 select-none leading-none">
-                     {portfolioData.personal.name[0]}
-                   </span>
-                </div>
-              </>
-            )}
+            {/* Mobile Side-by-Side Profiles */}
+            <div className="flex flex-row gap-4 lg:hidden h-48 md:h-64">
+              <div className="flex-1 relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10">
+                <Image 
+                  src="/profile_software.jpg" 
+                  alt="Software Identity"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-purple-600/10" />
+              </div>
+              <div className="flex-1 relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10">
+                <Image 
+                  src="/profile_electrical.jpg" 
+                  alt="Electrical Identity"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-red-800/10" />
+              </div>
+            </div>
+
+            {/* Main Section Image (Desktop) */}
+            <div className="hidden lg:block aspect-[4/5] relative rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/10 group">
+              {data.profileImage ? (
+                 <Image 
+                   src={data.profileImage} 
+                   alt={portfolioData.personal.name}
+                   fill
+                   className="object-cover transition-transform duration-700 group-hover:scale-105"
+                 />
+              ) : (
+                <>
+                  <div className={cn(
+                    "absolute inset-0 opacity-10",
+                    role === "software" ? "bg-purple-600" : "bg-red-800"
+                  )} />
+                  <div className="absolute inset-0 flex items-center justify-center p-12 overflow-hidden">
+                     <span className="text-[20rem] font-black text-white/5 select-none leading-none">
+                       {portfolioData.personal.name[0]}
+                     </span>
+                  </div>
+                </>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>

@@ -11,9 +11,9 @@ export function Experience() {
   const data = portfolioData[role];
 
   return (
-    <section id="experience" className="py-32 relative">
+    <section id="experience" className="py-16 lg:py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="max-w-2xl mb-20">
+        <div className="max-w-2xl mb-12 lg:mb-20">
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,7 +36,7 @@ export function Experience() {
           </motion.h2>
         </div>
         
-        <div className="space-y-24">
+        <div className="space-y-16 lg:space-y-24">
           {data.experience.map((item, index) => (
             <motion.div 
               key={index} 

@@ -12,7 +12,7 @@ export function Hero() {
   const data = portfolioData[role];
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center pt-24 lg:pt-20 overflow-hidden">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className={cn(
@@ -47,7 +47,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-6xl lg:text-8xl font-black tracking-tight leading-[0.9]"
+            className="text-5xl lg:text-8xl font-black tracking-tight leading-[1.1] lg:leading-[0.9]"
           >
             {portfolioData.personal.name.split(" ").map((name, i) => (
               <span key={i} className="block last:text-zinc-500">{name}</span>

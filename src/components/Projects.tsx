@@ -13,9 +13,9 @@ export function Projects() {
   const data = portfolioData[role];
 
   return (
-    <section id="projects" className="py-32 bg-zinc-950/20">
+    <section id="projects" className="py-16 lg:py-32 bg-zinc-950/20">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-20">
           <div className="max-w-2xl">
             <motion.h3 
               initial={{ opacity: 0, x: -20 }}
@@ -102,7 +102,7 @@ export function Projects() {
                 </div>
               </div>
 
-              <div className="p-10 flex flex-col flex-1 relative z-10 bg-zinc-950/40 backdrop-blur-sm">
+              <div className="p-6 lg:p-10 flex flex-col flex-1 relative z-10 bg-zinc-950/40 backdrop-blur-sm">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
                     <span 
