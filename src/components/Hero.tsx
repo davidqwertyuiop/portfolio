@@ -47,22 +47,29 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6.5rem] font-black tracking-tight leading-[1] lg:leading-[0.85] text-white">
-              <span className="block">Full Stack</span>
-              <span className="block">Developer &</span>
-              <span className={cn(
-                "block bg-clip-text text-transparent bg-gradient-to-r select-none pb-1",
-                role === "software" 
-                  ? "from-purple-500 via-indigo-400 to-purple-600 animate-gradient-x" 
-                  : "from-red-600 via-rose-500 to-red-800"
-              )}>
-                {role === "software" ? "Blockchain" : "Electrical"}
-              </span>
-              <span className={cn(
-                "block opacity-60",
-                role === "software" ? "text-indigo-400" : "text-red-900"
-              )}>
-                Engineer
-              </span>
+              {role === "software" ? (
+                <>
+                  <span className="block">Full Stack</span>
+                  <span className="block">Developer &</span>
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-indigo-400 to-purple-600 animate-gradient-x select-none pb-1">
+                    Blockchain
+                  </span>
+                  <span className="block opacity-60 text-indigo-400">
+                    Engineer
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="block italic">Electrical &</span>
+                  <span className="block">Control Systems</span>
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-rose-500 to-red-800 select-none pb-1">
+                    Engineer
+                  </span>
+                  <span className="block opacity-60 text-red-900">
+                    Powering Precision
+                  </span>
+                </>
+              )}
             </h1>
           </motion.div>
 
