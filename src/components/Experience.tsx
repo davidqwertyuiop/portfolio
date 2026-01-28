@@ -51,7 +51,7 @@ export function Experience() {
                   {item.period}
                 </span>
                 <div className="space-y-1">
-                  <h3 className="text-3xl font-black tracking-tight">{item.company}</h3>
+                  <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight">{item.company}</h3>
                   {item.location && (
                     <div className="flex items-center gap-2 text-zinc-500 text-sm font-medium">
                       <MapPin className="w-3 h-3" />
@@ -63,7 +63,7 @@ export function Experience() {
               
               <div className="space-y-6">
                 <h4 className={cn(
-                  "text-2xl font-bold italic tracking-tight",
+                  "text-xl sm:text-2xl font-bold italic tracking-tight leading-tight",
                   role === "software" ? "text-purple-400" : "text-red-700"
                 )}>
                   {item.role}

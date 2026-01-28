@@ -57,10 +57,10 @@ export const portfolioData = {
     cvPath: "/cv/sijibomi-software-cv.pdf"
   },
   software: {
-    profileImage: "/profile_software.jpg",
-    title: "Full-Stack Developer & Blockchain Engineer",
+    profileImage: "/profile_software_new.jpg",
+    title: "Full Stack Developer & Blockchain Engineer",
     description:
-      "Full-stack decentralized application architect specialized in Solana, Rust, and high-performance Web3 systems. Expert in software-hardware integration for automation.",
+      "Specializing in building high-performance decentralized applications and robust mobile solutions. Expert in Solana, Rust, and Flutter.",
     skills: [
       { name: "Rust", icon: SiRust, color: "#dea584" },
       { name: "Solana", icon: SiSolana, color: "#14F195" },
@@ -68,10 +68,6 @@ export const portfolioData = {
       { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
       { name: "Flutter", icon: SiFlutter, color: "#02569B" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-      { name: "Google Cloud", icon: SiGooglecloud, color: "#4285F4" },
-      { name: "Azure (Fundamentals)", icon: SiVscodium, color: "#0078D4" },
-      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
       { name: "Git/GitHub", icon: SiGithub, color: "#FFFFFF" }
     ],

@@ -13,9 +13,9 @@ export function Hero() {
   const data = portfolioData[role];
 
   return (
-    <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center pt-24 lg:pt-20 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-24 lg:pt-32 pb-12 lg:pb-24 overflow-hidden">
       {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div className={cn(
           "absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-20 animate-pulse",
           role === "software" ? "bg-purple-600" : "bg-red-900"
@@ -24,141 +24,123 @@ export function Hero() {
           "absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-20 animate-pulse delay-700",
           role === "software" ? "bg-indigo-600" : "bg-rose-900"
         )} />
-        
         {/* Grid Overlay */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-[0.05]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center gap-16">
-        <div className="flex-1 space-y-8">
-          <div className="flex items-center justify-between lg:justify-start gap-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+      <div className="container relative z-10 mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
+        {/* Content Side */}
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:space-y-8 max-w-2xl order-1">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 backdrop-blur-md"
+          >
+            <span className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+            <span className="text-[10px] lg:text-xs font-bold tracking-widest uppercase text-white/70">Available for new projects</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6.5rem] font-black tracking-tight leading-[1] lg:leading-[0.85] text-white">
+              <span className="block">Full Stack</span>
+              <span className="block">Developer &</span>
+              <span className={cn(
+                "block bg-clip-text text-transparent bg-gradient-to-r select-none pb-1",
+                role === "software" 
+                  ? "from-purple-500 via-indigo-400 to-purple-600 animate-gradient-x" 
+                  : "from-red-600 via-rose-500 to-red-800"
+              )}>
+                {role === "software" ? "Blockchain" : "Electrical"}
               </span>
-              <span className="text-[10px] lg:text-xs font-bold tracking-widest uppercase text-zinc-400">Status: Active</span>
-            </motion.div>
-
-            {/* Mobile Profile Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
-              className="lg:hidden w-12 h-12 rounded-full border-2 border-white/10 overflow-hidden relative"
-            >
-              <Image 
-                src={data.profileImage}
-                alt="Profile"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl lg:text-8xl font-black tracking-tight leading-[1.1] lg:leading-[0.9]"
-          >
-            {portfolioData.personal.name.split(" ").map((name, i) => (
-              <span key={i} className="block last:text-zinc-500">{name}</span>
-            ))}
-          </motion.h1>
-
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className={cn(
-              "text-2xl lg:text-4xl font-bold italic tracking-tight",
-              role === "software" ? "text-purple-400" : "text-red-600"
-            )}
-          >
-            {data.title}
-          </motion.h2>
+              <span className={cn(
+                "block opacity-60",
+                role === "software" ? "text-indigo-400" : "text-red-900"
+              )}>
+                Engineer
+              </span>
+            </h1>
+          </motion.div>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg lg:text-xl text-zinc-400 max-w-2xl leading-relaxed font-medium"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base sm:text-lg lg:text-xl text-zinc-400 leading-relaxed font-medium max-w-xl"
           >
-            {data.description}
+            {data.description.split("Expert in").map((part, i) => (
+              i === 0 ? part : <span key={part}>Expert in <span className="text-white font-bold">{part}</span></span>
+            ))}
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-6 pt-4"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center gap-4 lg:gap-6 pt-4 w-full sm:w-auto"
           >
             <Link 
               href="#projects"
-              className={cn(
-                "h-14 px-10 rounded-2xl font-black uppercase tracking-widest flex items-center gap-3 transition-all duration-300 shadow-2xl",
-                role === "software"
-                  ? "bg-purple-600 text-white hover:bg-purple-500 shadow-purple-500/20"
-                  : "bg-red-900 text-white hover:bg-red-800 shadow-red-500/20"
-              )}
+              className="group flex items-center gap-2 text-white font-bold text-lg hover:gap-4 transition-all duration-300 w-full sm:w-auto justify-center sm:justify-start"
             >
-              Explore Work
-              <ArrowRight className="w-5 h-5" />
+              View Projects
+              <ArrowRight className="w-5 h-5 text-zinc-500 group-hover:text-white" />
             </Link>
-            
-            <div className="flex flex-col gap-4 w-full lg:w-auto">
-              <span className="text-zinc-500 font-black uppercase tracking-widest text-[10px]">CV Archive:</span>
-              <div className="flex gap-2">
-                <a 
-                  href={role === "software" ? "/cv/sijibomi-software-cv.pdf" : "/cv/sijibomi-electrical-cv.pdf"}
-                  target="_blank"
-                  className="flex-1 h-12 lg:h-14 px-4 lg:px-8 rounded-2xl font-black uppercase tracking-widest text-[10px] lg:text-xs flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all backdrop-blur-sm group"
-                >
-                  Preview
-                  <BookOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                </a>
-                <a 
-                  href={role === "software" ? "/cv/sijibomi-software-cv.pdf" : "/cv/sijibomi-electrical-cv.pdf"}
-                  download 
-                  className="flex-1 h-12 lg:h-14 px-4 lg:px-8 rounded-2xl font-black uppercase tracking-widest text-[10px] lg:text-xs flex items-center justify-center gap-3 bg-zinc-100 text-black hover:bg-white transition-all shadow-xl group"
-                >
-                  Download
-                  <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-                </a>
-              </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
+              <a 
+                href={role === "software" ? "/cv/sijibomi-software-cv.pdf" : "/cv/sijibomi-electrical-cv.pdf"}
+                download 
+                className="w-full sm:w-auto h-12 lg:h-14 px-8 rounded-xl font-black flex items-center justify-center gap-3 bg-white text-black hover:bg-zinc-200 transition-all shadow-2xl active:scale-95 text-sm lg:text-base"
+              >
+                Download CV
+                <Download className="w-4 h-4 lg:w-5 lg:h-5" />
+              </a>
+
+              <Link 
+                href="#contact"
+                className="w-full sm:w-auto h-12 lg:h-14 px-10 rounded-xl font-black flex items-center justify-center border border-zinc-700 text-white hover:bg-white/5 transition-all active:scale-95 text-sm lg:text-base"
+              >
+                Contact Me
+              </Link>
             </div>
           </motion.div>
         </div>
 
-        {/* Abstract Visual / Image Placeholder */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex-1 w-full max-w-lg aspect-square relative group"
+          className="flex-1 w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[450px] aspect-[4/5] relative z-10 order-2 lg:order-2"
         >
+          {/* Layered Backing Decorations */}
           <div className={cn(
-            "absolute inset-0 rounded-[4rem] border-2 border-white/5 transition-all duration-500 group-hover:rotate-6",
-            role === "software" ? "group-hover:border-purple-500/20" : "group-hover:border-red-900/20"
+            "absolute inset-0 rounded-[2.5rem] lg:rounded-[3rem] rotate-6 blur-2xl opacity-20 -z-10",
+            role === "software" ? "bg-purple-600" : "bg-red-600"
           )} />
           <div className={cn(
-            "absolute inset-4 rounded-[3.5rem] border-2 border-white/5 transition-all duration-700 group-hover:-rotate-3 group-hover:bg-white/[0.02]",
-            role === "software" ? "group-hover:border-purple-500/10" : "group-hover:border-red-900/10"
+            "absolute inset-0 rounded-[2rem] lg:rounded-[2.5rem] -rotate-3 border border-white/5 bg-zinc-900/40 -z-10",
+            role === "software" ? "bg-purple-900/10" : "bg-red-900/10"
           )} />
-          <div className="absolute inset-8 rounded-[3rem] bg-zinc-900 border border-white/10 flex items-center justify-center overflow-hidden">
-             {/* Character/Icon Display */}
-             {role === "software" ? (
-               <Code className="w-32 h-32 text-purple-600/50" />
-             ) : (
-               <Cpu className="w-32 h-32 text-blue-600/50" />
-             )}
-             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
+
+          <div className="relative w-full h-full rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl group bg-zinc-900">
+            <Image 
+              src={data.profileImage}
+              alt="Oluwasijibomi Fadeyibi"
+              fill
+              className="object-cover transition-all duration-700 scale-100 group-hover:scale-105"
+              priority
+              quality={100}
+              unoptimized={true}
+              sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 450px"
+            />
+            {/* Top Shine/Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </div>

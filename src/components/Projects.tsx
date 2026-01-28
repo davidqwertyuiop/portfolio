@@ -114,7 +114,7 @@ export function Projects() {
                   ))}
                 </div>
 
-                <h3 className="text-2xl font-black mb-4 group-hover:text-white transition-colors tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-black mb-4 group-hover:text-white transition-colors tracking-tight leading-tight">
                   {project.title}
                 </h3>
                 

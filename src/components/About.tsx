@@ -14,24 +14,24 @@ export function About() {
   return (
     <section id="about" className="py-16 lg:py-32 border-t border-white/5 bg-zinc-950/20">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="max-w-4xl mx-auto">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-8 lg:space-y-12 lg:sticky lg:top-32"
+            className="space-y-8 lg:space-y-12"
           >
-            <div className="space-y-6 lg:space-y-8">
+            <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
               <h3 className={cn(
                 "text-xs font-black uppercase tracking-[0.3em] mb-4",
                 role === "software" ? "text-purple-500" : "text-red-800"
               )}>
                 Identity
               </h3>
-              <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight">
+              <h2 className="text-4xl lg:text-7xl font-black tracking-tight leading-tight">
                 Solving complex problems with <span className="italic">precision</span>.
               </h2>
-              <div className="space-y-4 lg:space-y-6 text-xl text-zinc-400 leading-relaxed font-medium">
+              <div className="space-y-4 lg:space-y-6 text-xl lg:text-2xl text-zinc-400 leading-relaxed font-medium">
                 <p>
                   I am <span className="text-white font-bold">{portfolioData.personal.name}</span>, 
                   a multidisciplinary engineer operating at the intersection of 
@@ -44,7 +44,7 @@ export function About() {
             </div>
 
             {/* Shared Background / Education Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 lg:pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 pt-8 border-t border-white/5">
               {/* Education */}
               <div className="space-y-6">
                 <div className={cn("flex items-center gap-3", role === "software" ? "text-purple-400" : "text-red-700")}>
@@ -53,13 +53,13 @@ export function About() {
                 </div>
                 {data.education.map((edu, i) => (
                   <div key={i} className="space-y-2">
-                    <p className="text-sm font-bold text-zinc-200">{edu.school}</p>
-                    <p className={cn("text-xs font-medium italic", role === "software" ? "text-purple-500/80" : "text-red-500/80")}>{edu.degree}</p>
+                    <p className="text-lg font-bold text-zinc-200">{edu.school}</p>
+                    <p className={cn("text-sm font-medium italic", role === "software" ? "text-purple-500/80" : "text-red-500/80")}>{edu.degree}</p>
                     <p className="text-xs font-mono text-zinc-500">{edu.period}</p>
-                    <ul className="space-y-1 pt-2">
+                    <ul className="space-y-2 pt-4">
                       {edu.highlights.map((h, j) => (
-                        <li key={j} className="text-xs text-zinc-400 flex items-start gap-2">
-                          <span className={cn("mt-1", role === "software" ? "text-purple-600" : "text-red-700")}>•</span>
+                        <li key={j} className="text-sm text-zinc-400 flex items-start gap-2">
+                          <span className={cn("mt-1.5", role === "software" ? "text-purple-600" : "text-red-700")}>•</span>
                           {h}
                         </li>
                       ))}
@@ -78,9 +78,9 @@ export function About() {
                     </div>
                     <div className="space-y-4">
                       {("certifications" in data ? data.certifications : []).map((cert, i) => (
-                        <div key={i} className="group">
-                          <p className="text-sm font-bold text-zinc-200 group-hover:text-purple-400 transition-colors uppercase tracking-tight">{cert.name}</p>
-                          <p className="text-xs text-zinc-500">{cert.issuer}</p>
+                        <div key={i} className="group border-b border-white/5 pb-4 last:border-0">
+                          <p className="text-lg font-bold text-zinc-200 group-hover:text-purple-400 transition-colors uppercase tracking-tight">{cert.name}</p>
+                          <p className="text-sm text-zinc-500">{cert.issuer}</p>
                         </div>
                       ))}
                     </div>
@@ -93,9 +93,9 @@ export function About() {
                     </div>
                     <div className="space-y-4">
                       {("awards" in data ? data.awards : []).map((award, i) => (
-                        <div key={i} className="group">
-                          <p className="text-sm font-bold text-zinc-200 group-hover:text-red-600 transition-colors tracking-tight">{award.title}</p>
-                          <p className="text-xs text-zinc-500 font-mono">{award.period}</p>
+                        <div key={i} className="group border-b border-white/5 pb-4 last:border-0">
+                          <p className="text-lg font-bold text-zinc-200 group-hover:text-red-600 transition-colors tracking-tight">{award.title}</p>
+                          <p className="text-sm text-zinc-500 font-mono">{award.period}</p>
                         </div>
                       ))}
                     </div>
@@ -103,29 +103,6 @@ export function About() {
                 ) : null}
               </div>
             </div>
-          </motion.div>
-
-          {/* Profile Image Column */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="aspect-[4/5] relative rounded-[3rem] lg:rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/10 group"
-          >
-            {data.profileImage ? (
-               <Image 
-                 src={data.profileImage} 
-                 alt={portfolioData.personal.name}
-                 fill
-                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-               />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center p-12 overflow-hidden">
-                 <span className="text-[12rem] lg:text-[20rem] font-black text-white/5 select-none leading-none">
-                   {portfolioData.personal.name[0]}
-                 </span>
-              </div>
-            )}
           </motion.div>
         </div>
       </div>
