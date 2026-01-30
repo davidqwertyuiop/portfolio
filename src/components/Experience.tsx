@@ -8,7 +8,7 @@ import { MapPin } from "lucide-react";
 
 export function Experience() {
   const { role } = useRole();
-  const data = portfolioData[role];
+  const data = portfolioData[role as keyof typeof portfolioData] as any;
 
   return (
     <section id="experience" className="py-16 lg:py-32 relative">
@@ -37,7 +37,7 @@ export function Experience() {
         </div>
         
         <div className="space-y-16 lg:space-y-24">
-          {data.experience.map((item, index) => (
+          {data.experience.map((item: any, index: number) => (
             <motion.div 
               key={index} 
               initial={{ opacity: 0, y: 40 }}
