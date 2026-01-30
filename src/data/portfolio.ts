@@ -49,14 +49,13 @@ export interface AwardItem {
 export const portfolioData = {
   personal: {
     name: "Oluwasijibomi Fadeyibi",
-    email: "ooluwasijibomi2406@gmail.com",
-    phone: "+234 901-346-0799",
     github: "https://github.com/davidqwertyuiop",
     linkedin: "https://www.linkedin.com/in/oluwasijibomi-fadeyibi-238743258",
-    roles: ["Software Engineer", "Electrical Engineer"],
-    cvPath: "/cv/sijibomi-software-cv.pdf"
+    phone: "+234 901-346-0799",
   },
   software: {
+    email: "davidqwertyuiop39@gmail.com",
+    cvPath: "/cv/sijibomi-software-cv.pdf",
     profileImage: "/profile_software_new.jpg",
     title: "Full Stack Developer & Blockchain Engineer",
     description:
@@ -113,7 +112,7 @@ export const portfolioData = {
         title: "Full-Stack Token Vesting Platform",
         description: "A production-ready Solana vesting system. Allows projects to lock tokens and investors to claim based on schedules. Features real-time tracking and immutable logic.",
         tags: ["Solana", "Rust", "Anchor", "Next.js"],
-        link: "#", // Hosting not yet done
+        link: "#",
         github: "https://github.com/davidqwertyuiop/token-vesting",
         image: "/projects/vesting.png"
       },
@@ -152,6 +151,8 @@ export const portfolioData = {
     ]
   },
   electrical: {
+    email: "ooluwasijibomi2406@gmail.com",
+    cvPath: "/cv/sijibomi-electrical-cv.pdf",
     profileImage: "/profile_electrical.jpg",
     title: "Electrical & Control Systems Engineer",
     description:
@@ -252,6 +253,59 @@ export const portfolioData = {
         link: "#",
         github: undefined,
         image: "/projects/plc.png"
+      }
+    ]
+  },
+  backend: {
+    email: "ooluwasijibomi2406@gmail.com",
+    cvPath: "/cv/sijibomi-rust-cv.pdf",
+    profileImage: "/profile_software_new.jpg", // Reusing software profile image for now
+    title: "Rust Backend & Systems Engineer",
+    description: "Architecting high-performance systems with Rust. Expert in ownership models, asynchronous programming, and efficient data processing.",
+    skills: [
+      { name: "Rust", icon: SiRust, color: "#dea584" },
+      { name: "SQL", icon: SiPostgresql, color: "#336791" },
+      { name: "Linux", icon: SiVscodium, color: "#FCC624" },
+      { name: "Git", icon: SiGithub, color: "#FFFFFF" },
+      { name: "Solana", icon: SiSolana, color: "#14F195" },
+      { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "GCP", icon: SiGooglecloud, color: "#4285F4" }
+    ],
+    education: [
+      {
+        school: "Elizade University, Ilara-Mokin",
+        degree: "Bachelor of Engineering (B.Eng.) in Electrical & Electronics Engineering",
+        period: "2019 – 2024",
+        highlights: [
+          "Second Class Upper Honours",
+          "Top 10% performer in the department"
+        ]
+      }
+    ],
+    experience: [
+      {
+        role: "Rust Backend Developer",
+        company: "Freelance",
+        period: "Oct 2023 – Present",
+        description: "Developing high-performance backend systems and blockchain programs. Focused on memory safety, concurrency, and scalable architecture."
+      }
+    ],
+    projects: [
+      {
+        title: "Log Analysis Command-Line Tool",
+        description: "Developed a command-line application in Rust for parsing and analyzing application log files. Implemented filtering by log level, date range, and keyword. Designed to process large files incrementally to minimize memory usage.",
+        tags: ["Rust", "CLI", "Systems"],
+        link: "#",
+        github: "https://github.com/davidqwertyuiop/log-analyzer"
+      },
+      {
+        title: "Stateful Rust Application (Solana / Anchor)",
+        description: "Designed and implemented a stateful Rust application enforcing strict validation and authorization rules. Developed time-based business logic controlling access to resources. Modeled persistent state using strongly typed Rust structures.",
+        tags: ["Rust", "Solana", "Anchor", "Security"],
+        link: "#",
+        github: "https://github.com/davidqwertyuiop/token-vesting",
+        image: "/projects/vesting.png"
       }
     ]
   }

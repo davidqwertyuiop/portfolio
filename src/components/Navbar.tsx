@@ -20,17 +20,19 @@ export function Navbar() {
             "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110",
             role === "software" 
               ? "bg-purple-600/20 text-purple-400 border border-purple-500/20" 
-              : "bg-red-600/20 text-red-500 border border-red-500/20"
+              : role === "backend"
+                ? "bg-orange-600/20 text-orange-500 border border-orange-500/20"
+                : "bg-red-600/20 text-red-500 border border-red-500/20"
           )}>
-            {role === "software" ? <Code className="w-6 h-6" /> : <Cpu className="w-6 h-6" />}
+            {role === "software" ? <Code className="w-6 h-6" /> : role === "backend" ? <Zap className="w-6 h-6" /> : <Cpu className="w-6 h-6" />}
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-bold tracking-tight text-white leading-tight">SIJIBOMI</span>
             <span className={cn(
               "text-[10px] font-medium tracking-[0.2em] transform uppercase",
-              role === "software" ? "text-purple-400" : "text-red-500"
+              role === "software" ? "text-purple-400" : role === "backend" ? "text-orange-500" : "text-red-500"
             )}>
-              {role === "software" ? "Software Engineer" : "Electrical Engineer"}
+              {role === "software" ? "Software Engineer" : role === "backend" ? "Rust Backend Engineer" : "Electrical Engineer"}
             </span>
           </div>
         </Link>
@@ -51,10 +53,13 @@ export function Navbar() {
             </div>
           </div>
 
-          {role === "software" ? (
-            <button className="h-10 px-6 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-200 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-              <Wallet className="w-4 h-4" />
-              Connect
+          {role === "software" || role === "backend" ? (
+            <button className={cn(
+              "h-10 px-6 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]",
+              role === "software" ? "bg-white text-black hover:bg-zinc-200" : "bg-orange-600 text-white hover:bg-orange-700"
+            )}>
+              {role === "software" ? <Wallet className="w-4 h-4" /> : <Code className="w-4 h-4" />}
+              {role === "software" ? "Connect" : "System Debug"}
             </button>
           ) : (
             <div className="flex items-center gap-3">

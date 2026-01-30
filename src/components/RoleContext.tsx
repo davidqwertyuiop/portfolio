@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext } from "react";
 
-export type Role = "software" | "electrical";
+export type Role = "software" | "electrical" | "backend";
 
 interface RoleContextType {
   role: Role;

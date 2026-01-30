@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export function About() {
   const { role } = useRole();
-  const data = portfolioData[role];
+  const data = portfolioData[role as keyof typeof portfolioData] as any;
   
   return (
     <section id="about" className="py-16 lg:py-32 border-t border-white/5 bg-zinc-950/20">
@@ -24,7 +24,7 @@ export function About() {
             <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
               <h3 className={cn(
                 "text-xs font-black uppercase tracking-[0.3em] mb-4",
-                role === "software" ? "text-purple-500" : "text-red-800"
+                role === "software" ? "text-purple-500" : role === "backend" ? "text-orange-500" : "text-red-800"
               )}>
                 Identity
               </h3>
@@ -35,7 +35,7 @@ export function About() {
                 <p>
                   I am <span className="text-white font-bold">{portfolioData.personal.name}</span>, 
                   a multidisciplinary engineer operating at the intersection of 
-                  {role === "software" ? " blockchain security and scalable web applications." : " industrial automation and high-voltage power systems."}
+                  {role === "software" ? " blockchain security and scalable web applications." : role === "backend" ? " systems programming and high-performance backend architecture." : " industrial automation and high-voltage power systems."}
                 </p>
                 <p>
                   {data.description}
@@ -47,19 +47,19 @@ export function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 pt-8 border-t border-white/5">
               {/* Education */}
               <div className="space-y-6">
-                <div className={cn("flex items-center gap-3", role === "software" ? "text-purple-400" : "text-red-700")}>
+                <div className={cn("flex items-center gap-3", role === "software" ? "text-purple-400" : role === "backend" ? "text-orange-400" : "text-red-700")}>
                   <GraduationCap className="w-6 h-6" />
                   <h4 className="text-sm font-black uppercase tracking-widest text-white">Education</h4>
                 </div>
-                {data.education.map((edu, i) => (
+                {data.education.map((edu: any, i: number) => (
                   <div key={i} className="space-y-2">
                     <p className="text-lg font-bold text-zinc-200">{edu.school}</p>
-                    <p className={cn("text-sm font-medium italic", role === "software" ? "text-purple-500/80" : "text-red-500/80")}>{edu.degree}</p>
+                    <p className={cn("text-sm font-medium italic", role === "software" ? "text-purple-500/80" : role === "backend" ? "text-orange-500/80" : "text-red-500/80")}>{edu.degree}</p>
                     <p className="text-xs font-mono text-zinc-500">{edu.period}</p>
                     <ul className="space-y-2 pt-4">
-                      {edu.highlights.map((h, j) => (
+                      {edu.highlights.map((h: string, j: number) => (
                         <li key={j} className="text-sm text-zinc-400 flex items-start gap-2">
-                          <span className={cn("mt-1.5", role === "software" ? "text-purple-600" : "text-red-700")}>•</span>
+                          <span className={cn("mt-1.5", role === "software" ? "text-purple-600" : role === "backend" ? "text-orange-600" : "text-red-700")}>•</span>
                           {h}
                         </li>
                       ))}
@@ -77,7 +77,7 @@ export function About() {
                       <h4 className="text-sm font-black uppercase tracking-widest text-white">Certifications</h4>
                     </div>
                     <div className="space-y-4">
-                      {("certifications" in data ? data.certifications : []).map((cert, i) => (
+                      {("certifications" in data ? data.certifications : []).map((cert: any, i: number) => (
                         <div key={i} className="group border-b border-white/5 pb-4 last:border-0">
                           <p className="text-lg font-bold text-zinc-200 group-hover:text-purple-400 transition-colors uppercase tracking-tight">{cert.name}</p>
                           <p className="text-sm text-zinc-500">{cert.issuer}</p>
@@ -92,7 +92,7 @@ export function About() {
                       <h4 className="text-sm font-black uppercase tracking-widest text-white">Leadership</h4>
                     </div>
                     <div className="space-y-4">
-                      {("awards" in data ? data.awards : []).map((award, i) => (
+                      {("awards" in data ? data.awards : []).map((award: any, i: number) => (
                         <div key={i} className="group border-b border-white/5 pb-4 last:border-0">
                           <p className="text-lg font-bold text-zinc-200 group-hover:text-red-600 transition-colors tracking-tight">{award.title}</p>
                           <p className="text-sm text-zinc-500 font-mono">{award.period}</p>

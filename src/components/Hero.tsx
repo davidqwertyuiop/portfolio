@@ -11,9 +11,9 @@ import Image from "next/image";
 
 export function Hero() {
   const { role } = useRole();
-  const data = portfolioData[role];
+  const data = portfolioData[role as keyof typeof portfolioData] as any;
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
-  const cvPath = role === "software" ? "/cv/sijibomi-software-cv.pdf" : "/cv/sijibomi-electrical-cv.pdf";
+  const cvPath = data.cvPath;
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center pt-24 lg:pt-32 pb-12 lg:pb-24 overflow-hidden">
@@ -21,11 +21,11 @@ export function Hero() {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className={cn(
           "absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-20 animate-pulse",
-          role === "software" ? "bg-purple-600" : "bg-red-900"
+          role === "software" ? "bg-purple-600" : role === "backend" ? "bg-orange-600" : "bg-red-900"
         )} />
         <div className={cn(
           "absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-20 animate-pulse delay-700",
-          role === "software" ? "bg-indigo-600" : "bg-rose-900"
+          role === "software" ? "bg-indigo-600" : role === "backend" ? "bg-amber-600" : "bg-rose-900"
         )} />
         {/* Grid Overlay */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-[0.05]" />
@@ -61,6 +61,17 @@ export function Hero() {
                     Engineer
                   </span>
                 </>
+              ) : role === "backend" ? (
+                <>
+                  <span className="block">Rust Backend</span>
+                  <span className="block">& Systems</span>
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-800 select-none pb-1">
+                    Engineer
+                  </span>
+                  <span className="block opacity-60 text-orange-400">
+                    High Performance
+                  </span>
+                </>
               ) : (
                 <>
                   <span className="block italic">Electrical &</span>
@@ -82,8 +93,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-lg lg:text-xl text-zinc-400 leading-relaxed font-medium max-w-xl"
           >
-            {data.description.split("Expert in").map((part, i) => (
-              i === 0 ? part : <span key={part}>Expert in <span className="text-white font-bold">{part}</span></span>
+            {data.description.split("Expert in").map((part: string, i: number) => (
+              i === 0 ? part : <span key={i}>Expert in <span className="text-white font-bold">{part}</span></span>
             ))}
           </motion.p>
 
@@ -129,11 +140,11 @@ export function Hero() {
           {/* Layered Backing Decorations */}
           <div className={cn(
             "absolute inset-0 rounded-[2.5rem] lg:rounded-[3rem] rotate-6 blur-2xl opacity-20 -z-10",
-            role === "software" ? "bg-purple-600" : "bg-red-600"
+            role === "software" ? "bg-purple-600" : role === "backend" ? "bg-orange-600" : "bg-red-600"
           )} />
           <div className={cn(
             "absolute inset-0 rounded-[2rem] lg:rounded-[2.5rem] -rotate-3 border border-white/5 bg-zinc-900/40 -z-10",
-            role === "software" ? "bg-purple-900/10" : "bg-red-900/10"
+            role === "software" ? "bg-purple-900/10" : role === "backend" ? "bg-orange-900/10" : "bg-red-900/10"
           )} />
 
           <div className="relative w-full h-full rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl group bg-zinc-900">
@@ -172,7 +183,7 @@ export function Hero() {
             >
               <div className={cn(
                 "absolute top-0 right-0 w-32 h-32 blur-3xl opacity-20 -mr-10 -mt-10",
-                role === "software" ? "bg-purple-500" : "bg-red-600"
+                role === "software" ? "bg-purple-500" : role === "backend" ? "bg-orange-500" : "bg-red-600"
               )} />
               
               <button 
@@ -197,7 +208,7 @@ export function Hero() {
                 >
                   <div className={cn(
                     "w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110",
-                    role === "software" ? "bg-purple-500/10 text-purple-400" : "bg-red-500/10 text-red-600"
+                    role === "software" ? "bg-purple-500/10 text-purple-400" : role === "backend" ? "bg-orange-500/10 text-orange-400" : "bg-red-500/10 text-red-600"
                   )}>
                     <Eye className="w-6 h-6" />
                   </div>
@@ -214,7 +225,7 @@ export function Hero() {
                 >
                   <div className={cn(
                     "w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110",
-                    role === "software" ? "bg-purple-600 text-white" : "bg-red-900 text-white"
+                    role === "software" ? "bg-purple-600 text-white" : role === "backend" ? "bg-orange-600 text-white" : "bg-red-900 text-white"
                   )}>
                     <Download className="w-6 h-6" />
                   </div>

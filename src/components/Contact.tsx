@@ -16,7 +16,7 @@ export function Contact() {
           {/* Background Glow */}
           <div className={cn(
              "absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-10 transition-colors duration-1000",
-             role === "software" ? "bg-purple-600" : "bg-blue-600"
+             role === "software" ? "bg-purple-600" : role === "backend" ? "bg-orange-600" : "bg-blue-600"
           )} />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -35,7 +35,7 @@ export function Contact() {
 
             <div className="flex flex-col justify-center space-y-4 lg:space-y-6">
               <a 
-                href={`mailto:${portfolioData.personal.email}?subject=Collaboration%20Inquiry&body=Hi,%20I%20would%20like%20to%20work%20with%20you.`}
+                href={`mailto:${(portfolioData[role as keyof typeof portfolioData] as any).email}?subject=Collaboration%20Inquiry&body=Hi,%20I%20would%20like%20to%20work%20with%20you.`}
                 className="group flex items-center justify-between p-6 lg:p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all overflow-hidden relative"
               >
                 <div className="flex items-center gap-4 lg:gap-6">

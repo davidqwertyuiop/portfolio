@@ -16,7 +16,13 @@ export function Footer() {
           <div className="space-y-4 text-center md:text-left">
             <h3 className="text-xl font-black tracking-tight">SIJIBOMI FADEYIBI</h3>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
-              Operating at the threshold of {role === "software" ? "blockchain and full-stack engineering" : "industrial automation and electrical systems"}.
+              Operating at the threshold of {
+                role === "software" 
+                  ? "blockchain and full-stack engineering" 
+                  : role === "backend"
+                    ? "high-performance systems and backend architecture"
+                    : "industrial automation and electrical systems"
+              }.
             </p>
           </div>
 
@@ -27,22 +33,30 @@ export function Footer() {
             <a href={portfolioData.personal.linkedin} target="_blank" className="hover:text-white transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href={`mailto:${portfolioData.personal.email}`} className="hover:text-white transition-colors">
+            <a href={`mailto:${(portfolioData[role as keyof typeof portfolioData] as any).email}`} className="hover:text-white transition-colors">
               <Mail className="w-5 h-5" />
             </a>
           </div>
 
-          <div className="flex flex-col items-center md:items-end gap-2 opacity-30 hover:opacity-100 transition-opacity duration-500">
-            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-700">Auxiliary Portfolio</span>
-            <Link 
-              href={role === "software" ? "/engineering" : "/"}
-              className={cn(
-                "text-[10px] font-bold uppercase tracking-widest transition-all",
-                role === "software" ? "text-zinc-600 hover:text-purple-400" : "text-zinc-600 hover:text-red-700"
+          <div className="flex flex-col items-center md:items-end gap-3 opacity-30 hover:opacity-100 transition-opacity duration-500">
+            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-700">Alternate Profiles</span>
+            <div className="flex flex-col items-center md:items-end gap-1.5">
+              {role !== "software" && (
+                <Link href="/" className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 hover:text-purple-400 transition-all">
+                  Software Engineering
+                </Link>
               )}
-            >
-              {role === "software" ? "Electrical Engineering" : "Software Engineering"} Profile
-            </Link>
+              {role !== "backend" && (
+                <Link href="/backend" className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 hover:text-orange-400 transition-all">
+                  Rust Backend Engineer
+                </Link>
+              )}
+              {role !== "electrical" && (
+                <Link href="/engineering" className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 hover:text-red-700 transition-all">
+                  Electrical Engineering
+                </Link>
+              )}
+            </div>
           </div>
         </div>
 
