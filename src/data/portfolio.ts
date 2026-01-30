@@ -2,9 +2,9 @@ import { IconType } from "react-icons";
 import { 
   SiSolana, SiRust, SiTypescript, SiNextdotjs, SiReact, SiNodedotjs, 
   SiPostgresql, SiTailwindcss, SiFirebase, SiCplusplus, SiArduino,
-  SiVercel, SiGithub, SiIota, SiGooglecloud, SiFlutter, SiDart, SiVscodium
+  SiVercel, SiGithub, SiIota, SiGooglecloud, SiFlutter, SiDart, SiVscodium,
 } from "react-icons/si";
-
+import { VscAzure } from "react-icons/vsc";
 export interface TechSkill {
   name: string;
   icon: IconType;
@@ -270,7 +270,7 @@ export const portfolioData = {
       { name: "Solana", icon: SiSolana, color: "#14F195" },
       { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-      { name: "GCP", icon: SiGooglecloud, color: "#4285F4" }
+      { name: "Azure", icon: VscAzure, color: "#0078D4" }
     ],
     education: [
       {
